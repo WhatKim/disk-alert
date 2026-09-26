@@ -32,7 +32,8 @@ for TARGET in "${TARGET_PATHS[@]}"; do
 }
 PAYLOAD_EOF
 )
-        curl -sf -H "Content-Type: application/json" -X POST -d "$PAYLOAD" "$WEBHOOK_URL" \
+        curl -sf --retry 3 --retry-delay 2 --max-time 10 \
+             -H "Content-Type: application/json" -X POST -d "$PAYLOAD" "$WEBHOOK_URL" \
             || echo "Discord 알림 전송 실패: $TARGET" >&2
     else
         echo "$(date '+%Y-%m-%d %H:%M:%S') 정상 - ${TARGET}: ${USAGE_PCT}%"
