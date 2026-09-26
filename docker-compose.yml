@@ -13,6 +13,8 @@ services:
     build: .
     container_name: disk-alert
     restart: unless-stopped
+    #labels:
+      #- "com.centurylinklabs.watchtower.enable=false"
     environment:
       - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
       - DISK_THRESHOLD=70
