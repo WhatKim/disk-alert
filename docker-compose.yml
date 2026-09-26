@@ -1,0 +1,15 @@
+services:
+  disk-alert:
+    build: .
+    container_name: disk-alert
+    restart: unless-stopped
+    environment:
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - DISK_THRESHOLD=70
+      - CHECK_PATHS=/hostfs
+      - CRON_SCHEDULE=0 0,9-23 * * *
+    volumes:
+      - /:/hostfs:ro
+      # 다른 파티션도 감시하려면 아래처럼 추가로 마운트하고
+      # CHECK_PATHS 에 경로를 콤마로 이어서 추가하세요.
+      # - /data:/hostfs-data:ro
