@@ -71,3 +71,9 @@ environment:
 빌드 직후 `docker compose exec disk-alert /scripts/check-disk.sh` 를 실행하면
 크론 스케줄과 무관하게 즉시 한 번 검사하고, 임계치를 넘으면 바로 Discord로
 알림이 옵니다.
+
+알림 확인 
+   ```bash
+   docker compose exec disk-alert sh -c 'DISCORD_WEBHOOK_URL="$DISCORD_WEBHOOK_URL" DISK_THRESHOLD=1 /scripts/check-disk.sh'
+   ```
+크론 스케줄과 무관하게 즉시 한 번 검사하고, 바로 Discord로 알림이 옵니다.
