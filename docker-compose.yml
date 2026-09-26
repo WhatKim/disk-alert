@@ -1,3 +1,13 @@
+x-common: &default-common
+  logging:
+    driver: json-file
+    options:
+      max-size: "1024k"
+      max-file: "5"
+  dns:
+    - 1.1.1.1
+    - 8.8.8.8
+
 services:
   disk-alert:
     build: .
@@ -13,3 +23,4 @@ services:
       # 다른 파티션도 감시하려면 아래처럼 추가로 마운트하고
       # CHECK_PATHS 에 경로를 콤마로 이어서 추가하세요.
       # - /data:/hostfs-data:ro
+    <<: *default-common
