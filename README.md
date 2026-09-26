@@ -9,7 +9,7 @@ Discord 웹훅으로 알림을 보냅니다. busybox의 crond로 지정한 시�
 
 1. 저장소 클론
    ```bash
-   git clone https://github.com/본인아이디/monit-disk-alert.git
+   git clone https://github.com/WhatKim/disk-alert.git
    cd monit-disk-alert
    ```
 
